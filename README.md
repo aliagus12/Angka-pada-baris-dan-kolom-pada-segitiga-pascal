@@ -1,0 +1,1 @@
+# Angka-pada-baris-dan-kolom-pada-segitiga-pascal
