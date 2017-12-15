@@ -21,10 +21,6 @@ public class Test_si_Jhon {
         for (int a = 0; a <= nRow; a++) {
             numb = 1;
             row = a + 1;
-            for (int b = nRow - a; b > 0; b--) {
-                System.out.print(" ");
-            }
-
             for (int c = 0; c <= a; c++) {
                 if (c > 0) {
                     numb = numb * (row - c) / c;
@@ -32,12 +28,10 @@ public class Test_si_Jhon {
                 } else {
                     mListInt.add(numb);
                 }
-                System.out.print(numb + " ");
 
             }
             mListOfListInt.add(mListInt);
             mListInt = new ArrayList<>();
-            System.out.println();
         }
 
         if(rowTh >= 1 && rowTh <= nRow && colombTh >= 1 && colombTh <= rowTh) {
