@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.ali.testjhon.databinding.ActivityMainBinding;
 
@@ -23,6 +25,22 @@ public class MainActivity extends AppCompatActivity implements Interface{
         property = new Property("");
         binding.setPresenter(presenter);
         binding.setProperty(property);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_on_off, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_off:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

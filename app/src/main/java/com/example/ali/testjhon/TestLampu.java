@@ -1,5 +1,7 @@
 package com.example.ali.testjhon;
 
+import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,45 +12,65 @@ import java.util.Scanner;
 
 public class TestLampu {
     public static void main(String[] args) {
-        int n = 9;
-        int x;
+        int n = 18;
+        String mInput;
         Scanner input = new Scanner(System.in);
-        List<Integer> listInt = new ArrayList<>();
-        List<Integer> nList = new ArrayList<>();
-        List<String> listWarna = new ArrayList<>();
-        listWarna.add("mati");
-        listWarna.add("coklat");
-        listWarna.add("merah");
-        listWarna.add("orange");
-        listWarna.add("kuning");
-        listWarna.add("hijau");
-        listWarna.add("biru");
-        listWarna.add("ungu");
-        listWarna.add("abu-abu");
-        listWarna.add("putih");
 
+        List<String> listColor = getListColor();
+
+        List<Integer> listInt = new ArrayList<>();
         for (int y = 1; y <= 9; y++) {
             listInt.add(0);
         }
 
-        for (int y = 1; y <= n; y++) {
-            x = Integer.parseInt(input.next());
-            nList.add(x);
-        }
-        System.out.print(listInt + " kondisi awal");
-        System.out.println();
+        mInput = input.nextLine().trim();
+        String[] listInput = mInput.split(" ");
+        String[] allNumber = new String[n];
 
-        cariLampuYangHidup(listInt, nList, n);
-        banyakLampuYangHidup(listInt, listWarna);
+        if (listInput.length < n) {
+            for (int i = 1; i <= listInput.length; i++) {
+                allNumber[i - 1] = listInput[i - 1];
+            }
+            for (int i = listInput.length + 1; i <= n; i++) {
+                allNumber[i - 1] = "0";
+            }
+            System.out.println();
+            System.out.print(listInt + " kondisi awal");
+            cariLampuYangHidup(listInt, allNumber, n);
+        } else {
+            System.out.print(listInt + " kondisi awal");
+            cariLampuYangHidup(listInt, listInput, n);
+        }
+        banyakLampuYangHidup(listInt, listColor);
     }
 
-    private static void cariLampuYangHidup(List<Integer> listInt, List<Integer> nList, int n) {
-        for (int aa = 1; aa <= nList.size(); aa++) {
+    @NonNull
+    private static List<String> getListColor() {
+        List<String> listColor = new ArrayList<>();
+        listColor.add("mati");
+        listColor.add("coklat");
+        listColor.add("merah");
+        listColor.add("orange");
+        listColor.add("kuning");
+        listColor.add("hijau");
+        listColor.add("biru");
+        listColor.add("ungu");
+        listColor.add("abu-abu");
+        listColor.add("putih");
+        return listColor;
+    }
+
+    private static void cariLampuYangHidup(
+            List<Integer> listInt,
+            String[] all,
+            int n
+    ) {
+        for (int aa = 1; aa <= all.length; aa++) {
             if (aa % 2 == 1) {
-                int xx = nList.get(aa - 1);
-                if (xx >= 1 && xx <= n) {
-                    if (aa < nList.size()) {
-                        int dx = nList.get(aa);
+                int xx = Integer.parseInt(all[aa - 1]);
+                if (xx >= 1 && xx <= listInt.size()) {
+                    if (aa < all.length) {
+                        int dx = Integer.parseInt(all[aa]);
                         if (dx >= 0 && dx <= 10000) {
                             if (dx % 2 == 1) {
                                 if (listInt.get(xx - 1) == 0) {
@@ -71,10 +93,11 @@ public class TestLampu {
                 }
             }
         }
+        System.out.println();
         System.out.print(listInt.toString() + " kondisi akhir");
     }
 
-    private static void banyakLampuYangHidup(List<Integer> listInt, List<String> listWarna) {
+    private static void banyakLampuYangHidup(List<Integer> listInt, List<String> listColor) {
         int counter = 0;
         String mString = listInt.toString()
                 .replace("[", "")
@@ -87,7 +110,6 @@ public class TestLampu {
             }
         }
         System.out.println();
-        System.out.println(counter);
-        System.out.print("warnanya adalah: "+ listWarna.get(counter));
+        System.out.print("warnanya adalah: " + listColor.get(counter));
     }
 }

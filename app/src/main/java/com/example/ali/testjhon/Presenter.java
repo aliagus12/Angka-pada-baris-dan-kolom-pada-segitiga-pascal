@@ -1,5 +1,6 @@
 package com.example.ali.testjhon;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
 
 import com.example.ali.testjhon.databinding.ActivityMainBinding;
@@ -21,18 +22,56 @@ public class Presenter {
     }
 
     public void checkLamp(Property property) {
-        List<Integer> listWarna = new ArrayList<>();
-        listWarna.add(R.color.colorHitam);
-        listWarna.add(R.color.colorCoklat);
-        listWarna.add(R.color.colorMerah);
-        listWarna.add(R.color.colorOrange);
-        listWarna.add(R.color.colorKuning);
-        listWarna.add(R.color.colorHijau);
-        listWarna.add(R.color.colorBiru);
-        listWarna.add(R.color.colorUngu);
-        listWarna.add(R.color.colorAbuabu);
-        listWarna.add(R.color.colorPutih);
+        List<Integer> listColor = getListColor();
 
+        List<AppCompatImageView> listLamp = getListLamp();
+
+        for (int i = 1; i <= listLamp.size(); i++) {
+            view.setFirs(listLamp.get(i - 1));
+        }
+
+        int n = 18;
+        String mInput = property.getInput().trim();
+        String[] nList = mInput.split(" ");
+        String[] allNumber = new String[n];
+
+        List<Integer> listInt = new ArrayList<>();
+        for (int y = 1; y <= 9; y++) {
+            listInt.add(0);
+        }
+
+        if (nList.length < n) {
+            for (int i = 1; i <= nList.length; i++) {
+                allNumber[i - 1] = nList[i - 1];
+            }
+            for (int i = nList.length + 1; i <= n; i++) {
+                allNumber[i - 1] = "0";
+            }
+            cariLampuYangHidup(listInt, allNumber, n, listLamp);
+        } else {
+            cariLampuYangHidup(listInt, nList, n, listLamp);
+        }
+        banyakLampuYangHidup(listInt, listColor);
+    }
+
+    @NonNull
+    private List<Integer> getListColor() {
+        List<Integer> listColor = new ArrayList<>();
+        listColor.add(R.color.colorHitam);
+        listColor.add(R.color.colorCoklat);
+        listColor.add(R.color.colorMerah);
+        listColor.add(R.color.colorOrange);
+        listColor.add(R.color.colorKuning);
+        listColor.add(R.color.colorHijau);
+        listColor.add(R.color.colorBiru);
+        listColor.add(R.color.colorUngu);
+        listColor.add(R.color.colorAbuabu);
+        listColor.add(R.color.colorPutih);
+        return listColor;
+    }
+
+    @NonNull
+    private List<AppCompatImageView> getListLamp() {
         List<AppCompatImageView> listLamp = new ArrayList<>();
         listLamp.add(binding.image1);
         listLamp.add(binding.image2);
@@ -43,29 +82,21 @@ public class Presenter {
         listLamp.add(binding.image7);
         listLamp.add(binding.image8);
         listLamp.add(binding.image9);
-
-        for (int i = 0; i < listLamp.size(); i++) {
-            view.setFirs(listLamp.get(i));
-        }
-
-        String mInput = property.getInput();
-        String[] nList = mInput.split(" ");
-        int n = 9;
-        List<Integer> listInt = new ArrayList<>();
-        for (int y = 1; y <= 9; y++) {
-            listInt.add(0);
-        }
-        cariLampuYangHidup(listInt, nList, n, listLamp);
-        banyakLampuYangHidup(listInt, listWarna);
+        return listLamp;
     }
 
-    public void cariLampuYangHidup(List<Integer> listInt, String[] nList, int n, List<AppCompatImageView> listLamp) {
-        for (int aa = 1; aa <= nList.length; aa++) {
+    public void cariLampuYangHidup(
+            List<Integer> listInt,
+            String[] all,
+            int n,
+            List<AppCompatImageView> listLamp
+    ) {
+        for (int aa = 1; aa <= n; aa++) {
             if (aa % 2 == 1) {
-                int xx = Integer.parseInt(nList[aa - 1]);/*angka ini menjadi index bola lampu ke berapa*/
-                if (xx >= 1 && xx <= n) {
-                    if (aa < nList.length) {
-                        int dx = Integer.parseInt(nList[aa]);/*akan menjadi nilai berapa kali di klick*/
+                int xx = Integer.parseInt(all[aa - 1]);/*angka ini menjadi index bola lampu ke berapa jangan lupa*/
+                if (xx >= 1 && xx <= listInt.size()) {
+                    if (aa < all.length) {
+                        int dx = Integer.parseInt(all[aa]);/*akan menjadi nilai berapa kali di klick*/
                         if (dx >= 0 && dx <= 10000) {
                             if (dx % 2 == 1) {
                                 if (listInt.get(xx - 1) % 2 == 0) {
