@@ -34,7 +34,6 @@ public class TestLampu {
         for (int y = 1; y <= n; y++) {
             x = Integer.parseInt(input.next());
             nList.add(x);
-            break;
         }
         System.out.print(listInt + " kondisi awal");
         System.out.println();
@@ -88,6 +87,7 @@ public class TestLampu {
             }
         }
         System.out.println();
+        System.out.println(counter);
         System.out.print("warnanya adalah: "+ listWarna.get(counter));
     }
 }

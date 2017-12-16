@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorMerah">#f9061f</color>
+    <color name="colorKuning">#ecf407</color>
+    <color name="colorCoklat">#993300</color>
+    <color name="colorOrange">#ff6600</color>
+    <color name="colorHijau">#08f51f</color>
+    <color name="colorBiru">#0d28f4</color>
+    <color name="colorUngu">#b205fc</color>
+    <color name="colorAbuabu">#c0c0c0</color>
+    <color name="colorPutih">#f1ecec</color>
+    <color name="colorHitam">#080808</color>
 </resources>

@@ -1,9 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.ali.testjhon.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.example.ali.testjhon.Presenter" />
+
+        <variable
+            name="property"
+            type="com.example.ali.testjhon.Property" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.ali.testjhon.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/transition_on" />
+            </LinearLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:padding="10dp">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/imageIndikator"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/input"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@={property.input}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:onClick="@{(view) -> presenter.checkLamp(property)}"
+                    android:text="Ok"
+                    android:id="@+id/btnOk"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/input" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:text="Masukkan angka yang di ikuti spasi setiap akhirnya"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnOk" />
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>
+
